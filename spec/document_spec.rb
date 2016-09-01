@@ -10,11 +10,11 @@ RSpec.describe Document do
     end
 
     it 'has a size' do
-      expect(document.size).to eq 4815162342
+      expect(document.size).to eq "4815162342"
     end
 
     it 'has an id' do
-      expect(document.id).to eq 1234
+      expect(document.id).to eq "1234"
     end
   end
 end

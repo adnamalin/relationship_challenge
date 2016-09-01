@@ -14,7 +14,7 @@ RSpec.describe Investor do
     end
 
     it 'has an id' do
-      expect(investor.id).to eq 1234
+      expect(investor.id).to eq "1234"
     end
 
     it 'has an array of document ids it has direct connection to' do

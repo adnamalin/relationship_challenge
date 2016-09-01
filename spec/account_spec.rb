@@ -10,7 +10,7 @@ RSpec.describe Account do
     end
 
     it 'has an id' do
-      expect(account.id).to eq 1234
+      expect(account.id).to eq "1234"
     end
   end
 end

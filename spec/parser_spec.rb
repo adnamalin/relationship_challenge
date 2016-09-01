@@ -7,6 +7,7 @@ RSpec.describe Parser do
 
   let(:parser) { Parser.new }
   let(:investor) { Investor.new(first_name: "Amanda", last_name: "Lin", id: "1234") }
+  let(:document) { Document.new(name: "Backstop Solutions" ,size: "4815162342", id: "4321") }
 
   describe 'create investors' do
     it 'creates investors from array' do
@@ -32,13 +33,25 @@ RSpec.describe Parser do
   describe 'assigning relationships' do
 
       describe '#assign_investor_documents' do
-        it 'takes arrat of Investors to Documents Relations and inserts the document ID into the corresponding Investor.documents array' do
-          relations =  [":Investors to Documents Relations:", "Investor ID, Document ID", "1234, 1984"]
+        it 'takes array of Investors to Documents Relations and inserts the document ID into the corresponding Investor.documents array' do
+          relations =  [":Investors to Documents Relations:", "Investor ID, Document ID", "1234, 4321"]
           investors = [investor]
-          parser.assign_investor_documents(relations, investors)
-          expect(investor.documents[0]).to eq "1984"
+          docs = [document]
+          parser.assign_investor_documents(relations, investors, docs)
+          expect(investor.documents[0]).to eq "4321"
         end
       end
+
+      describe '#assign_documents_investors' do
+        it 'takes array of Investors to Documents Relations and inserts the investor ID into the corresponding document.investors array' do
+          relations =  [":Investors to Documents Relations:", "Investor ID, Document ID", "1234, 4321"]
+          investors = [investor]
+          docs = [document]
+          parser.assign_documents_investors(relations, investors, docs)
+          expect(document.investors[0]).to eq "1234"
+        end
+      end
+
   end
 
   end

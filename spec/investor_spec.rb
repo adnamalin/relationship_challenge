@@ -23,15 +23,13 @@ RSpec.describe Investor do
 
   end
 
-  # describe 'working with the cast' do
-  #   describe '#remaining_budget' do
-  #     it 'calculates the amount of casting budget left after paying the currect cast' do
-  #       actor_1 = Actor.new(salary: 1_000_000)
-  #       actor_2 = Actor.new(salary: 1_250_000)
+  # describe 'checking authorization' do
   #
-  #       film_project = FilmProject.new(cast: [actor_1, actor_2], casting_budget: 2_500_000)
+  #     describe '#direct_access?' do
+  #       it 'returns true or false if investor has direct access to document' do
+  #       end
   #
-  #       expect(film_project.remaining_budget).to be 250_000
   #     end
-  #   end
+  # end
+
 end

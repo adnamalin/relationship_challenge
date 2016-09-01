@@ -72,6 +72,16 @@ class Parser
     end
   end
 
+  def assign_documents_accounts(relations, documents, accounts)
+    relations[2..-1].each do |relation|
+      collect_ids = relation.split(", ")
+      find_docs = documents.select {|d| d.id == collect_ids[0]}
+      if find_docs != []
+        find_docs[0].accounts << collect_ids[1]
+      end
+    end
+  end
+
   def clean_new_lines(parsed_file)
     parsed_file.map! {|l| l.chomp }
   end

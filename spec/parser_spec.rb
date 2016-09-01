@@ -63,6 +63,16 @@ RSpec.describe Parser do
         end
       end
 
+      describe '#assign_documents_accounts' do
+        it 'Documents to Accounts Relations and inserts the account ID into the corresponding document.accounts array' do
+          relations =  [":Documents to Accounts Relations:", "Document ID, Account ID", "4321, 5678"]
+          docs = [document]
+          accounts = [account]
+          parser.assign_documents_accounts(relations, docs, accounts)
+          expect(document.accounts[0]).to eq "5678"
+        end
+      end
+
   end
 
   end

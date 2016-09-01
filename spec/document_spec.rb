@@ -17,6 +17,14 @@ RSpec.describe Document do
       expect(document.id).to eq "1234"
     end
 
+    it 'has an array of account ids it has direct connection to' do
+      expect(document.accounts).to eq []
+    end
+
+    it 'has an array of investor ids it has direct connection to' do
+      expect(document.investors).to eq []
+    end
+
   end
 
   describe 'checking authorization' do
@@ -26,6 +34,14 @@ RSpec.describe Document do
           document.investors << "1234"
           document.investors << "5678"
           expect(document.investors).to eq ["1234", "5678"]
+        end
+      end
+
+      describe '#accounts' do
+        it 'has an array of account ids it has direct connection to' do
+          document.accounts << "1234"
+          document.accounts << "5678"
+          expect(document.accounts).to eq ["1234", "5678"]
         end
       end
   end

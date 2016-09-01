@@ -10,8 +10,16 @@ class Investor
     @accounts = []
   end
 
-  def direct_access_to_doc?(document_id)
-    documents.include?(document_id)
+  def has_access_to_doc?(document_object)
+    direct_access_to_doc?(document_object) || indirect_access_to_doc?(document_object)
+  end
+
+  def direct_access_to_doc?(document_object)
+    documents.include?(document_object.id)
+  end
+
+  def indirect_access_to_doc?(document_object)
+    accounts & document_object.accounts != []
   end
 
 end

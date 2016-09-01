@@ -8,7 +8,6 @@ class Parser
     parsed_file = File.new(file).readlines
     cleaned_file = clean_new_lines(parsed_file)
     raw_info = create_information_array(cleaned_file)
-    p raw_info
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
@@ -63,6 +62,16 @@ class Parser
     end
   end
 
+  def assign_investor_accounts(relations, investors, accounts)
+    relations[2..-1].each do |relation|
+      collect_ids = relation.split(", ")
+      find_invs = investors.select {|i| i.id == collect_ids[0]}
+      if find_invs != []
+        find_invs[0].accounts << collect_ids[1]
+      end
+    end
+  end
+
   def clean_new_lines(parsed_file)
     parsed_file.map! {|l| l.chomp }
   end
@@ -89,8 +98,8 @@ class Parser
 
 end
 
-parser = Parser.new
-parsed_to_objects = parser.parse_file('input_text.txt')
+# parser = Parser.new
+# parsed_to_objects = parser.parse_file('input_text.txt')
 # p parsed_to_objects[:documents]
 # p parsed_to_objects[:investors]
 # p parsed_to_objects[:accounts]

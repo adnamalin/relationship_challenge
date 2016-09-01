@@ -21,6 +21,10 @@ RSpec.describe Investor do
       expect(investor.documents).to eq []
     end
 
+    it 'has an array of account ids it has direct connection to' do
+      expect(investor.accounts).to eq []
+    end
+
   end
 
   describe 'checking authorization' do

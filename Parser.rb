@@ -8,6 +8,7 @@ class Parser
     parsed_file = File.new(file).readlines
     cleaned_file = clean_new_lines(parsed_file)
     raw_info = create_information_array(cleaned_file)
+    p raw_info
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
@@ -70,10 +71,14 @@ class Parser
     final_arr = []
     array = []
     parsed_file_arr.each do |line|
-      if line.match(/[:].+[:]/)
+      p line
+      if line.match(/[:].+[:]/) != nil
         array = []
         array << line
       elsif line == ""
+        final_arr << array
+      elsif line == parsed_file_arr[-1]
+        #corrects for the last line in file
         final_arr << array
       else
         array << line
@@ -87,5 +92,5 @@ end
 parser = Parser.new
 parsed_to_objects = parser.parse_file('input_text.txt')
 # p parsed_to_objects[:documents]
-p parsed_to_objects[:investors]
+# p parsed_to_objects[:investors]
 # p parsed_to_objects[:accounts]

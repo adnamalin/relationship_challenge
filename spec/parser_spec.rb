@@ -26,7 +26,7 @@ RSpec.describe Parser do
 
   describe 'create documents' do
     it 'creates documents from array' do
-      documents = [":Accounts:", "Account Name, ID", "Global Opportunity, 2525"]
+      documents = [":Documents:", "File Name, Size, ID", "meeting_notes_jan.pdf, 4815162342, 1984"]
       expect(parser.create_documents(documents)[0]).to be_a Document
     end
   end

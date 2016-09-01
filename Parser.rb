@@ -11,8 +11,15 @@ class Parser
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
-    assign_investor_documents(raw_info[4], investors, documents)
+    assign_all_relationships(raw_info, investors, accounts, documents)
     created_objects = {investors: investors, accounts: accounts, documents: documents}
+  end
+
+  def assign_all_relationships(raw_data, investors, accounts, documents)
+    assign_investor_documents(raw_data[4], investors, documents)
+    assign_documents_investors(raw_data[4], investors, documents)
+    assign_investor_accounts(raw_data[5], investors, accounts)
+    assign_documents_accounts(raw_data[3], documents, accounts)
   end
 
   def create_investors(investors_arr)
@@ -37,7 +44,7 @@ class Parser
     documents = []
     doc_arr[2..-1].each do |raw_doc|
       seperate_attr = raw_doc.split(", ")
-      documents << Document.new(name: seperate_attr[0],id: seperate_attr[1])
+      documents << Document.new(name: seperate_attr[0],size:seperate_attr[1] ,id: seperate_attr[2])
     end
     documents
   end
@@ -90,7 +97,6 @@ class Parser
     final_arr = []
     array = []
     parsed_file_arr.each do |line|
-      p line
       if line.match(/[:].+[:]/) != nil
         array = []
         array << line

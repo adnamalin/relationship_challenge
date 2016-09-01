@@ -11,11 +11,11 @@ class Parser
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
-    assign_all_relationships(raw_info, investors, accounts, documents)
+    assign_all_relationships(raw_info, investors, documents)
     created_objects = {investors: investors, accounts: accounts, documents: documents}
   end
 
-  def assign_all_relationships(raw_data, investors, accounts, documents)
+  def assign_all_relationships(raw_data, investors, documents)
     assign_investor_documents(raw_data[4], investors)
     assign_documents_investors(raw_data[4], documents)
     assign_investor_accounts(raw_data[5], investors)

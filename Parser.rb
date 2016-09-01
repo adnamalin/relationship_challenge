@@ -5,9 +5,7 @@ require_relative 'document.rb'
 class Parser
 
   def parse_file(file)
-    parsed_file = File.new(file).readlines
-    cleaned_file = clean_new_lines(parsed_file)
-    raw_info = create_information_array(cleaned_file)
+    raw_info = create_information_array(file)
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
@@ -81,24 +79,19 @@ class Parser
     end
   end
 
-  def clean_new_lines(parsed_file)
-    parsed_file.map! {|l| l.chomp }
-  end
-
-  def create_information_array(parsed_file_arr)
+  def create_information_array(file)
+    filelines = File.new(file).readlines
     final_arr = []
-    array = []
-    parsed_file_arr.each do |line|
+    current_array = []
+    filelines.each do |line|
+      line.chomp!
       if line.match(/[:].+[:]/) != nil
-        array = []
-        array << line
-      elsif line == ""
-        final_arr << array
-      elsif line == parsed_file_arr[-1]
-        #corrects for the last line in file
-        final_arr << array
+        current_array = []
+        current_array << line
+      elsif line == "" || line == filelines.last
+        final_arr << current_array
       else
-        array << line
+        current_array << line
       end
     end
     final_arr

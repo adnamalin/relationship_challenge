@@ -21,30 +21,24 @@ class Parser
   end
 
   def create_investors(investors_arr)
-    investors = []
-    investors_arr[2..-1].each do |raw_investor|
+    investors_arr[2..-1].map do |raw_investor|
       seperate_attr = raw_investor.split(", ")
-      investors << Investor.new(first_name: seperate_attr[0], last_name: seperate_attr[1], id: seperate_attr[2])
+      Investor.new(first_name: seperate_attr[0], last_name: seperate_attr[1], id: seperate_attr[2])
     end
-    investors
   end
 
   def create_accounts(accounts_arr)
-    accounts = []
-    accounts_arr[2..-1].each do |raw_acct|
+    accounts_arr[2..-1].map do |raw_acct|
       seperate_attr = raw_acct.split(", ")
-      accounts << Account.new(name: seperate_attr[0],id: seperate_attr[1])
+      Account.new(name: seperate_attr[0],id: seperate_attr[1])
     end
-    accounts
   end
 
   def create_documents(doc_arr)
-    documents = []
-    doc_arr[2..-1].each do |raw_doc|
+    doc_arr[2..-1].map do |raw_doc|
       seperate_attr = raw_doc.split(", ")
-      documents << Document.new(name: seperate_attr[0],size:seperate_attr[1] ,id: seperate_attr[2])
+      Document.new(name: seperate_attr[0],size:seperate_attr[1] ,id: seperate_attr[2])
     end
-    documents
   end
 
   def assign_investor_documents(relations, investors)

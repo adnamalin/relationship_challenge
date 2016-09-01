@@ -113,12 +113,3 @@ class Parser
   end
 
 end
-
-# parser = Parser.new
-# parsed_to_objects = parser.parse_file('input_text.txt')
-# # p parsed_to_objects[:documents]
-# # p parsed_to_objects[:investors]
-# # p parsed_to_objects[:accounts]
-# d = parsed_to_objects[:documents][0].all_investors_with_access(parsed_to_objects[:investors])
-# p d
-# p parsed_to_objects[:documents][0].investors

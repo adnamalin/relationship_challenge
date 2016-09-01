@@ -1,0 +1,44 @@
+:Investors:
+First Name, Last Name, ID
+Bob, Jones, 8675309
+Nancy, Khan, 161803
+Zaphod, Beeblebrox, 42
+Peter, Piper, 60221023
+
+:Accounts:
+Account Name, ID
+Global Opportunity, 2525
+Big Mountains, 19551105
+Large Trees, 314159
+Strong Like Bear, 271828
+
+:Documents:
+File Name, Size, ID
+meeting_notes_jan.pdf, 4815162342, 1984
+secret_meeting_notes_jan.pdf, 4815162342, 1492
+super_secret_meeting_notes_jan.pdf, 5971024, 1929
+actual_notes.txt, 8088, 1215
+
+:Documents to Accounts Relations:
+Document ID, Account ID
+1984, 19551105
+1929, 271828
+1984, 2525
+1492, 314159
+1984, 314159
+
+:Investors to Documents Relations:
+Investor ID, Document ID
+8675309, 1984
+42, 1215
+60221023, 1929
+60221023, 1984
+
+:Investors to Accounts Relations:
+Investor ID, Account ID
+42, 2525
+42, 19551105
+42, 314159
+42, 271828
+8675309, 19551105
+8675309, 314159

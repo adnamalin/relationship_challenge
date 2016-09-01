@@ -1,4 +1,6 @@
 require_relative 'investor.rb'
+require_relative 'account.rb'
+require_relative 'document.rb'
 
 class Parser
 
@@ -15,6 +17,24 @@ class Parser
       investors << Investor.new(first_name: seperate_attr[0], last_name: seperate_attr[1], id: seperate_attr[2])
     end
     investors
+  end
+
+  def create_accounts(accounts_arr)
+    accounts = []
+    accounts_arr[2..-1].each do |raw_acct|
+      seperate_attr = raw_acct.split(", ")
+      accounts << Account.new(name: seperate_attr[0],id: seperate_attr[1])
+    end
+    accounts
+  end
+
+  def create_accounts(doc_arr)
+    documents = []
+    doc_arr[2..-1].each do |raw_doc|
+      seperate_attr = raw_doc.split(", ")
+      documents << Document.new(name: seperate_attr[0],id: seperate_attr[1])
+    end
+    documents
   end
 
   def clean_new_lines(parsed_file)

@@ -2,11 +2,19 @@ require_relative '../investor'
 
 RSpec.describe Investor do
 
-  let(:investor) { Investor.new(first_name: "Amanda") }
+  let(:investor) { Investor.new(first_name: "Amanda", last_name: "Lin", id: "1234") }
 
   describe 'attributes' do
-    it 'has a title' do
+    it 'has a first name' do
       expect(investor.first_name).to eq 'Amanda'
+    end
+
+    it 'has a last name' do
+      expect(investor.last_name).to eq 'Lin'
+    end
+
+    it 'has an id' do
+      expect(investor.id).to eq 1234
     end
   end
 

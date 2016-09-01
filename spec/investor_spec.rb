@@ -41,8 +41,16 @@ RSpec.describe Investor do
           investor.documents << "5678"
           expect(investor.direct_access_to_doc?("9999")).to eq false
         end
-
       end
+
+      describe '#accounts' do
+        it 'has an array of document ids it has direct connection to' do
+          investor.accounts << "1234"
+          investor.accounts << "5678"
+          expect(investor.accounts).to eq ["1234", "5678"]
+        end
+      end
+
   end
 
 end

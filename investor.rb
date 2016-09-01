@@ -9,4 +9,8 @@ class Investor
     @documents = []
   end
 
+  def direct_access?(document_id)
+    documents.include?(document_id)
+  end
+
 end

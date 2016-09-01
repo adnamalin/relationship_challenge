@@ -23,13 +23,22 @@ RSpec.describe Investor do
 
   end
 
-  # describe 'checking authorization' do
-  #
-  #     describe '#direct_access?' do
-  #       it 'returns true or false if investor has direct access to document' do
-  #       end
-  #
-  #     end
-  # end
+  describe 'checking authorization' do
+
+      describe '#direct_access?' do
+        it 'returns true if investor has direct access to document' do
+          investor.documents << "4321"
+          investor.documents << "5678"
+          expect(investor.direct_access?("4321")).to eq true
+        end
+
+        it 'returns false if investor does not direct access to document' do
+          investor.documents << "4321"
+          investor.documents << "5678"
+          expect(investor.direct_access?("9999")).to eq false
+        end
+
+      end
+  end
 
 end

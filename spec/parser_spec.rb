@@ -38,7 +38,7 @@ RSpec.describe Parser do
           relations =  [":Investors to Documents Relations:", "Investor ID, Document ID", "1234, 4321"]
           investors = [investor]
           docs = [document]
-          parser.assign_investor_documents(relations, investors, docs)
+          parser.assign_investor_documents(relations, investors)
           expect(investor.documents[0]).to eq "4321"
         end
       end
@@ -48,7 +48,7 @@ RSpec.describe Parser do
           relations =  [":Investors to Documents Relations:", "Investor ID, Document ID", "1234, 4321"]
           investors = [investor]
           docs = [document]
-          parser.assign_documents_investors(relations, investors, docs)
+          parser.assign_documents_investors(relations, docs)
           expect(document.investors[0]).to eq "1234"
         end
       end
@@ -58,7 +58,7 @@ RSpec.describe Parser do
           relations =  [":Investors to Accounts Relations:", "Investor ID, Account ID", "1234, 4321"]
           investors = [investor]
           accounts = [account]
-          parser.assign_investor_accounts(relations, investors, accounts)
+          parser.assign_investor_accounts(relations, investors)
           expect(investor.accounts[0]).to eq "4321"
         end
       end
@@ -68,7 +68,7 @@ RSpec.describe Parser do
           relations =  [":Documents to Accounts Relations:", "Document ID, Account ID", "4321, 5678"]
           docs = [document]
           accounts = [account]
-          parser.assign_documents_accounts(relations, docs, accounts)
+          parser.assign_documents_accounts(relations, docs)
           expect(document.accounts[0]).to eq "5678"
         end
       end

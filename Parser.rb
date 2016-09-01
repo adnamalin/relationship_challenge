@@ -49,7 +49,7 @@ class Parser
     documents
   end
 
-  def assign_investor_documents(relations, investors, documents)
+  def assign_investor_documents(relations, investors)
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_investor = investors.select {|i| i.id == collect_ids[0]}
@@ -59,7 +59,7 @@ class Parser
     end
   end
 
-  def assign_documents_investors(relations, investors, documents)
+  def assign_documents_investors(relations, documents)
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_docs = documents.select {|i| i.id == collect_ids[1]}
@@ -69,7 +69,7 @@ class Parser
     end
   end
 
-  def assign_investor_accounts(relations, investors, accounts)
+  def assign_investor_accounts(relations, investors)
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_invs = investors.select {|i| i.id == collect_ids[0]}
@@ -79,7 +79,7 @@ class Parser
     end
   end
 
-  def assign_documents_accounts(relations, documents, accounts)
+  def assign_documents_accounts(relations, documents)
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_docs = documents.select {|d| d.id == collect_ids[0]}

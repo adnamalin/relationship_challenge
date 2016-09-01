@@ -16,10 +16,10 @@ class Parser
   end
 
   def assign_all_relationships(raw_data, investors, accounts, documents)
-    assign_investor_documents(raw_data[4], investors, documents)
-    assign_documents_investors(raw_data[4], investors, documents)
-    assign_investor_accounts(raw_data[5], investors, accounts)
-    assign_documents_accounts(raw_data[3], documents, accounts)
+    assign_investor_documents(raw_data[4], investors)
+    assign_documents_investors(raw_data[4], documents)
+    assign_investor_accounts(raw_data[5], investors)
+    assign_documents_accounts(raw_data[3], documents)
   end
 
   def create_investors(investors_arr)

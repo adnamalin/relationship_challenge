@@ -2,13 +2,12 @@ require_relative '../investor'
 
 RSpec.describe Investor do
 
-  let(:director) { Investor.new(first_name: "Amanda") }
+  let(:investor) { Investor.new(first_name: "Amanda") }
 
   describe 'attributes' do
     it 'has a title' do
-      expect(film_project.title).to eq 'Movie 1'
+      expect(investor.first_name).to eq 'Amanda'
     end
-
   end
 
   # describe 'working with the cast' do
@@ -22,5 +21,4 @@ RSpec.describe Investor do
   #       expect(film_project.remaining_budget).to be 250_000
   #     end
   #   end
-  end
 end

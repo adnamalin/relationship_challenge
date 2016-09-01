@@ -28,7 +28,7 @@ class Parser
     accounts
   end
 
-  def create_accounts(doc_arr)
+  def create_documents(doc_arr)
     documents = []
     doc_arr[2..-1].each do |raw_doc|
       seperate_attr = raw_doc.split(", ")

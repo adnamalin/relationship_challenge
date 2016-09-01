@@ -11,8 +11,8 @@ class Parser
     investors = create_investors(raw_info[0])
     accounts = create_accounts(raw_info[1])
     documents = create_documents(raw_info[2])
-    assign_investor_documents(raw_info[4], investors)
-    investors
+    assign_investor_documents(raw_info[4], investors, documents)
+    created_objects = {investors: investors, accounts: accounts, documents: documents}
   end
 
   def create_investors(investors_arr)
@@ -42,12 +42,22 @@ class Parser
     documents
   end
 
-  def assign_investor_documents(relations, investors)
+  def assign_investor_documents(relations, investors, documents)
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_investor = investors.select {|i| i.id == collect_ids[0]}
       if find_investor != []
         find_investor[0].documents << collect_ids[1]
+      end
+    end
+  end
+
+  def assign_documents_investors(relations, investors, documents)
+    relations[2..-1].each do |relation|
+      collect_ids = relation.split(", ")
+      find_docs = documents.select {|i| i.id == collect_ids[1]}
+      if find_docs != []
+        find_docs[0].investors << collect_ids[0]
       end
     end
   end
@@ -76,7 +86,6 @@ end
 
 parser = Parser.new
 parsed_to_objects = parser.parse_file('input_text.txt')
-p parsed_to_objects
-# investors = parsed_to_objects[0]
-# accounts = parsed_to_objects[1]
-# documents = parsed_to_objects[2]
+# p parsed_to_objects[:documents]
+p parsed_to_objects[:investors]
+# p parsed_to_objects[:accounts]

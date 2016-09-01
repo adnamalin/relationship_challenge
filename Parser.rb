@@ -1,3 +1,5 @@
+require_relative 'investor.rb'
+
 class Parser
 
   def parse_file(file)
@@ -6,9 +8,13 @@ class Parser
     create_information_array(cleaned_file)
   end
 
-  private
-
-  def create_investors
+  def create_investors(investors_arr)
+    investors = []
+    investors_arr[2..-1].each do |raw_investor|
+      seperate_attr = raw_investor.split(", ")
+      investors << Investor.new(first_name: seperate_attr[0], last_name: seperate_attr[1], id: seperate_attr[2])
+    end
+    investors
   end
 
   def clean_new_lines(parsed_file)
@@ -33,5 +39,5 @@ class Parser
 
 end
 
-parser = Parser.new
-p parser.parse_file('input_text.txt')
+# parser = Parser.new
+# p parser.parse_file('input_text.txt')

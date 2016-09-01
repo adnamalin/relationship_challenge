@@ -53,9 +53,7 @@ class Parser
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_investor = investors.select {|i| i.id == collect_ids[0]}
-      if find_investor != []
-        find_investor[0].documents << collect_ids[1]
-      end
+      find_investor[0].documents << collect_ids[1] if find_investor != []
     end
   end
 
@@ -63,9 +61,7 @@ class Parser
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_docs = documents.select {|i| i.id == collect_ids[1]}
-      if find_docs != []
-        find_docs[0].investors << collect_ids[0]
-      end
+      find_docs[0].investors << collect_ids[0] if find_docs != []
     end
   end
 
@@ -73,9 +69,7 @@ class Parser
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_invs = investors.select {|i| i.id == collect_ids[0]}
-      if find_invs != []
-        find_invs[0].accounts << collect_ids[1]
-      end
+      find_invs[0].accounts << collect_ids[1] if find_invs != []
     end
   end
 
@@ -83,9 +77,7 @@ class Parser
     relations[2..-1].each do |relation|
       collect_ids = relation.split(", ")
       find_docs = documents.select {|d| d.id == collect_ids[0]}
-      if find_docs != []
-        find_docs[0].accounts << collect_ids[1]
-      end
+      find_docs[0].accounts << collect_ids[1] if find_docs != []
     end
   end
 

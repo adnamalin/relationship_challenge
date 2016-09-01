@@ -10,6 +10,15 @@ RSpec.describe Parser do
   let(:document) { Document.new(name: "Backstop Solutions" ,size: "4815162342", id: "4321") }
   let(:account) { Account.new(name: "Backstop Solutions" ,id: "5678") }
 
+  describe 'parse file' do
+    it 'takes a file and parses it into a has with keys investors, documents, and accounts' do
+      parsed = parser.parse_file('input_text.txt')
+      expect(parsed[:investors].first.id).to eq "8675309"
+      expect(parsed[:documents].first.id).to eq "1984"
+      expect(parsed[:accounts].first.id).to eq "2525"
+    end
+  end
+
   describe 'create investors' do
     it 'creates investors from array' do
       investors = [":Investors:", "First Name, Last Name, ID", "Amanda, Lin, 1234"]
